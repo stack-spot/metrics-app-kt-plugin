@@ -1,4 +1,4 @@
-name: "metrics-app-plugin"
+name: "metrics-app-kt-plugin"
 description: Configure metrics exporting to Prometheus or AWS CloudWatch
 types:
   - app
