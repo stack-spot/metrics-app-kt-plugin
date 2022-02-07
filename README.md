@@ -1,1 +1,1 @@
-# metrics-app-kt-plugin
+# metrics-app-plugin

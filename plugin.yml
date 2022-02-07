@@ -1,0 +1,16 @@
+name: "metrics-app-plugin"
+description: Configure metrics exporting to Prometheus or AWS CloudWatch
+types:
+  - app
+tags:
+  - "metrics"
+  - "prometheus"
+  - "cloudwatch"
+inputs:
+  - label: "To which tool do you want to export metrics?"
+    name: "metrics_tool"
+    type: text
+    default: "Prometheus"
+    items:
+      - "AWS CloudWatch"
+      - "Prometheus"
