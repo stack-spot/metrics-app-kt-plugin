@@ -2,12 +2,11 @@
 dependencies {
     {% if inputs.metrics_tool == 'Prometheus' %}
     implementation("{{computed_inputs.dependency}}")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
     {% elif inputs.metrics_tool == 'AWS CloudWatch' %}
-    implementation("io.micrometer:micrometer-registry-cloudwatch2")
-    runtimeOnly(kotlin("reflect"))
+    implementation("com.stackspot.springboot:cloudwatch-starter:0.0.1")
     {% endif %}
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
 }
 
 {% if inputs.metrics_tool == 'AWS CloudWatch' %}
