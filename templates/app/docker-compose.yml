@@ -11,8 +11,8 @@ services:
     environment:
       STACKSPOT_METRICS_CLOUDWATCH_ENDPOINT: 'http://localstack:4566'
     volumes:
-      - '~/.aws/config:/root/.aws/config:ro'
-      - '~/.aws/credentials:/root/.aws/credentials:ro'
+      - '~/.aws/config:/.aws/config:ro'
+      - '~/.aws/credentials:/.aws/credentials:ro'
 
   localstack:
     image: localstack/localstack
