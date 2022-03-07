@@ -15,7 +15,7 @@ def delete_empty_file(path: Path):
 class Metrics(Template):
     def pre_hook(self, metadata: Metadata):
         results = filter(lambda template: template.template_data_path.endswith(REACTIVE_TEMPLATE),
-                         metadata.history_folder.load_os_history().applied_templates)
+                         metadata.history_folder.load_history().applied_templates)
         if next(results, None) is not None:
             metadata.computed_inputs['dependency'] = 'org.springframework.boot:spring-boot-starter-webflux'
         else:
