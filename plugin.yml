@@ -7,10 +7,21 @@ tags:
   - "prometheus"
   - "cloudwatch"
 inputs:
-  - label: "To which tool do you want to export metrics?"
+  - label: "To which tool do you want to export metrics?\n[WARNING] CDK will only be generated for CloudWatch"
     name: "metrics_tool"
     type: text
-    default: "Prometheus"
+    default: "AWS CloudWatch"
     items:
       - "AWS CloudWatch"
       - "Prometheus"
+hooks:
+  - type: edit
+    trigger: after-render
+    path: infra/src/main/kotlin/{{project_group_id|group_id_folder}}/{{project_name|to_camel}}CdkStack.kt
+    changes:
+      - search:
+          string: 'val accountRole = cluster.addServiceAccount("account", accountOptions).role'
+          insert-after:
+            value: "{% if inputs.metrics_tool == 'AWS CloudWatch' %}        accountRole.attachInlinePolicy(CloudWatchMetricsPolicy(this, \"cloudwatch-metrics\"))\n{% endif %}"
+          when:
+            not-exists: 'accountRole.attachInlinePolicy(CloudWatchMetricsPolicy(this, "cloudwatch-metrics"))'

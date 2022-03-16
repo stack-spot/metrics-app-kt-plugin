@@ -9,7 +9,7 @@ services:
   {% elif inputs.metrics_tool == 'AWS CloudWatch' %}
   {{project_name}}:
     environment:
-      STACKSPOT_METRICS_CLOUDWATCH_ENDPOINT: 'http://localstack:4566'
+      - STACKSPOT_METRICS_CLOUDWATCH_ENDPOINT='http://localstack:4566'
     volumes:
       - '~/.aws/config:/.aws/config:ro'
       - '~/.aws/credentials:/.aws/credentials:ro'

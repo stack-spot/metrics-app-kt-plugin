@@ -23,17 +23,12 @@ class Metrics(Template):
         return metadata
 
     def post_hook(self, metadata: Metadata):
-        base_path = metadata.target_path.joinpath('app')
-        delete_empty_file(base_path.joinpath('prometheus.yml'))
+        delete_empty_file(metadata.target_path.joinpath(
+            'app', 'prometheus.yml'))
 
-        group_id_subpaths = metadata.global_inputs['project_group_id'].split(
-            '.')
-        configuration_path = base_path.joinpath(
-            'src', 'main', 'kotlin', *group_id_subpaths)
-        delete_empty_file(configuration_path.joinpath(
-            'CloudWatchMetricsConfiguration.kt'))
-        delete_empty_file(configuration_path.joinpath(
-            'CloudWatchMetricsProperties.kt'))
+        group_subpaths = metadata.global_inputs['project_group_id'].split('.')
+        delete_empty_file(metadata.target_path.joinpath(
+            'infra', 'src', 'main', 'kotlin', *group_subpaths, 'CloudWatchMetricsPolicy.kt'))
 
 
 if __name__ == '__main__':
