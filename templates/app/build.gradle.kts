@@ -9,9 +9,3 @@ dependencies {
     runtimeOnly("software.amazon.awssdk:sts:2.17.143")
     {% endif %}
 }
-
-{% if inputs.metrics_tool == 'AWS CloudWatch' %}
-application {
-    applicationDefaultJvmArgs += "-Dstackspot.metrics.cloudwatch.endpoint=http://localhost:4566"
-}
-{% endif %}

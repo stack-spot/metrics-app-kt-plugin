@@ -25,3 +25,13 @@ hooks:
             value: "{% if inputs.metrics_tool == 'AWS CloudWatch' %}        accountRole.attachInlinePolicy(CloudWatchMetricsPolicy(this, \"cloudwatch-metrics\"))\n{% endif %}"
           when:
             not-exists: 'accountRole.attachInlinePolicy(CloudWatchMetricsPolicy(this, "cloudwatch-metrics"))'
+  - type: edit
+    trigger: after-render
+    path: infra/src/main/kotlin/{{project_group_id|group_id_folder}}/Manifests.kt
+    changes:
+      - search:
+          pattern: 'init\s?{'
+          insert-after:
+            value: "{% if inputs.metrics_tool == 'AWS CloudWatch' %}        env[\"STACKSPOT_METRICS_CLOUDWATCH_ENDPOINT\"] = EnvValue.fromValue(\"\")\n{% endif %}"
+          when:
+            not-exists: 'env["STACKSPOT_METRICS_CLOUDWATCH_ENDPOINT"] = EnvValue.fromValue("")'
