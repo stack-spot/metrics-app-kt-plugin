@@ -7,7 +7,7 @@ services:
     volumes:
       - './prometheus.yml:/etc/prometheus/prometheus.yml:ro'
   {% elif inputs.metrics_tool == 'AWS CloudWatch' %}
-  {{project_name}}:
+  {{project_name|lower}}:
     environment:
       - STACKSPOT_METRICS_CLOUDWATCH_ENDPOINT=http://localstack:4566
     volumes:
