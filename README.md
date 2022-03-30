@@ -1,11 +1,11 @@
 # **Metrics Kotlin Plugin** 
 
-**Descrição:** O plugin de `metrics` visa padronizar as métricas geradas pela aplicação.
-**Categoria:** Observability. 
-**Stack:** zup-kotlin-stack.
-**Criado em:** 08/02/2022.
-**Última atualização:** 08/02/2022.
-**Download:** https://github.com/stack-spot/metrics-app-kt-plugin.git
+- **Descrição:** O plugin de `metrics` visa padronizar as métricas geradas pela aplicação.
+- **Categoria:** Observability. 
+- **Stack:** zup-kotlin-stack.
+- **Criado em:** 08/02/2022.
+- **Última atualização:** 08/02/2022.
+- **Download:** https://github.com/stack-spot/metrics-app-kt-plugin.git
 
 ## **Visão Geral**
 
