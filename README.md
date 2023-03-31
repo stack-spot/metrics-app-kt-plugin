@@ -57,3 +57,4 @@ Os inputs necessários para utilizar o plugin são:
 | **Campo**    | **Valor**                | **Parâmetro**                    | **Descrição**                                                                 |
 | :------------| :------------------------| :--------------------------------| :-----------------------------------------------------------------------------|
 | metrics_tool | Padrão: "AWS CloudWatch" | ["AWS CloudWatch", "Prometheus"] | Identificador de definição para qual ferramenta as métricas devem ser enviadas|
+
